@@ -44,7 +44,7 @@ POST /conversations/:conversationId/messages
 GET  /availability-strategies
 ```
 
-### TODOS : 
+## TODOS : 
 
 - [ ] Add NoSQL Database (Cloudant or Mongo)
 - [ ] Handle the different types of response from Watson Assistant
