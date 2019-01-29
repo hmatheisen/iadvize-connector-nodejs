@@ -1,6 +1,8 @@
 # iAdvize Connector (Node.js)
 
-This is a Node.js version of the iadvize connector previously written in Go
+This is the Node.js version of the connector previously written in Go  
+
+This project is a connector for iAdvize, to use IBM Watson as a bot plugin
 
 ## How to run it :
 
@@ -12,7 +14,7 @@ This is a Node.js version of the iadvize connector previously written in Go
 cp .env.example .env
 ```
 
-* Fill it with your credentials
+* Fill it with your own Watson credentials
 
 ### Install Dependencies :
 
