@@ -1,17 +1,17 @@
-require('dotenv').config()
+require('dotenv').config();
 const { assistant } = require('../config');
 
 class AssistantHelper {
     constructor() {
-        this.session_id = ""
+        this.session_id = "";
     }  
 
     // Create Assistant Session
-    createSession() {
+    static createSession() {
         return new Promise((resolve, reject) => {
             const params = {
                 assistant_id: process.env.ASSISTANT_ID
-            }
+            };
     
             assistant.createSession(params, (err, response) => {
                 if (err) {
@@ -20,11 +20,11 @@ class AssistantHelper {
                     this.session_id = response.session_id;
                     resolve()
                 }
-            })
+            });
         });
     }
 
-    sendMessage(message) {
+    static sendMessage(message) {
         return new Promise((resolve, reject) => {
             const params = {
                 assistant_id: process.env.ASSISTANT_ID,
@@ -33,7 +33,7 @@ class AssistantHelper {
                     "message_type": "text",
                     "text": message,
                 }
-            }
+            };
 
             assistant.message(params, (err, response) => {
                 if (err) {
@@ -41,8 +41,8 @@ class AssistantHelper {
                 } else {
                     resolve(response);
                 }
-            })
-        })
+            });
+        });
     }
 }
 

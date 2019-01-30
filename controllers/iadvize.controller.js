@@ -1,10 +1,8 @@
 const { AssistantHelper } = require('../helpers');
 
-const assistantHelper = new AssistantHelper();
-
 class IadvizeController {
     // GET /external-bots
-    getExternalBots(req, res) {
+    static getExternalBots(req, res) {
         // Create the bots array
         const bots = [
             {
@@ -20,7 +18,7 @@ class IadvizeController {
     }
 
     // GET /bots/:idOperator:
-    getBot(req, res) {
+    static getBot(req, res) {
         // Get 'idOperator' from url params
         const idOperator = req.params.idOperator;
 
@@ -36,20 +34,20 @@ class IadvizeController {
             distributionRules: "",
             createdAt: "",
             updatedAt: "",
-        }
+        };
     
         // Send the response
-        res.status(200).send(botinfo)
+        res.status(200).send(botinfo);
     }
 
     // POST /conversations
-    postFirstMessage(req, res) {
+    static postFirstMessage(req, res) {
         // Get body
         const body = req.body;
 
-        assistantHelper.createSession()
+        AssistantHelper.createSession()
             .then(() => {
-                return assistantHelper.sendMessage("");
+                return AssistantHelper.sendMessage("");
             })
             .then(assistantResponse => {
                 const response = {
@@ -72,30 +70,25 @@ class IadvizeController {
                     variables: [],
                     createdAt: "",
                     updatedAt: "",
-                }
+                };
         
                 // Send the response
-                res.status(200).send(response)
+                res.status(200).send(response);
             })
             .catch(err => {
-                res.status(500).send(err)
+                res.status(500).send(err);
             });
     }
 
     // POST /conversations/:conversationId:/messages
-    postMessages(req, res) {
+    static postMessages(req, res) {
         // Get 'conversationId' from url params
         const conversationId = req.params.conversationId;
         // Get body
         const body = req.body;
 
-        console.log(conversationId);
-        console.log(body.idOperator);
-
-        assistantHelper.sendMessage(body.message.payload.value)
+        AssistantHelper.sendMessage(body.message.payload.value)
             .then(assistantResponse => {
-
-                console.log(JSON.stringify(assistantResponse, null, 2));
 
                 const response = {
                     idConversation: conversationId,
@@ -117,27 +110,26 @@ class IadvizeController {
                     variables: [],
                     createdAt: "",
                     updatedAt: "",
-                }
+                };
 
                 // Send the Response
                 res.status(200).send(response);
             })
             .catch(err => {
-                console.log("coucou")
-                res.status(500).send(err)
-            })
+                res.status(500).send(err);
+            });
     }
 
     // GET /availability-strategies
-    getAvailabilityStrategies(req, res) {
+    static getAvailabilityStrategies(req, res) {
         const strategies = [
             {
                 strategy: "customAvailability",
                 availability: true,
             }
-        ]
+        ];
 
-        res.status(500).send(strategies)
+        res.status(500).send(strategies);
     }
 
 }

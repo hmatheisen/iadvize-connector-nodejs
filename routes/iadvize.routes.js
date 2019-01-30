@@ -1,26 +1,24 @@
 const router = require('express').Router();
-const { IadvizeController } = require('../controllers')
-
-const iadvizeController = new IadvizeController();
+const { IadvizeController } = require('../controllers');
 
 router.get("/external-bots", (req, res) => {
-    iadvizeController.getExternalBots(req, res);
-})
+    IadvizeController.getExternalBots(req, res);
+});
 
 router.get("/bots/:idOperator", (req, res) => {
-    iadvizeController.getBot(req, res);
-})
+    IadvizeController.getBot(req, res);
+});
 
 router.post("/conversations", (req, res) => {
-    iadvizeController.postFirstMessage(req, res);
-})
+    IadvizeController.postFirstMessage(req, res);
+});
 
 router.post("/conversations/:conversationId/messages", (req, res) => {
-    iadvizeController.postMessages(req, res);
-})
+    IadvizeController.postMessages(req, res);
+});
 
 router.get("/availability-strategies", (req, res) => {
-    iadvizeController.getAvailabilityStrategies(req, res);
-})
+    IadvizeController.getAvailabilityStrategies(req, res);
+});
 
 module.exports = router;
