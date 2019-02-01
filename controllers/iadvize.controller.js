@@ -31,7 +31,7 @@ class IadvizeController {
                 description: "",
                 editorUrl: "https://iadvize-connector.eu-gb.mybluemix.net/api/iadvize"
             },
-            distributionRules: "",
+            distributionRules: [],
             createdAt: "",
             updatedAt: "",
         };
@@ -55,16 +55,16 @@ class IadvizeController {
                     idConversation: body.idConversation,
                     replies: [
                         {
-                            type: "string",
+                            type: "message",
                             duration: {
                                 unit: "",
                                 value: 0,
                             },
                             payload: {
-                                contentType: "string",
+                                contentType: "text",
                                 value: assistantResponse.output.generic[0].text
                             },
-                            quickReplies: null
+                            quickReplies: []
                         }
                     ],
                     variables: [],
@@ -95,16 +95,16 @@ class IadvizeController {
                     idOperator: body.idOperator,
                     replies: [
                         {
-                            type: "string",
+                            type: "message",
                             duration: {
                                 unit: "",
                                 value: 0,
                             },
                             payload: {
-                                contentType: "string",
+                                contentType: "text",
                                 value: assistantResponse.output.generic[0].text
                             },
-                            quickReplies: null
+                            quickReplies: []
                         }
                     ],
                     variables: [],
