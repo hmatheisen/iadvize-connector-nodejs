@@ -1,3 +1,3 @@
 module.exports = {
-    iadvizeRoutes: require('./iadvize.routes'),
+  iadvizeRoutes: require('./iadvize.routes'),
 }

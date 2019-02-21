@@ -1,3 +1,3 @@
 module.exports = {
-    AssistantHelper: require('./assistant.helper'),
+  AssistantHelpers: require('./assistant.helpers'),
 }

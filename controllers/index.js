@@ -1,3 +1,3 @@
 module.exports = {
-    IadvizeController: require('./iadvize.controller'),
+  IadvizeController: require('./iadvize.controller'),
 }

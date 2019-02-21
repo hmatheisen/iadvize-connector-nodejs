@@ -1,3 +1,3 @@
 module.exports = {
-    assistant: require('./assistant.config')
+  assistant: require('./assistant.config'),
 }
