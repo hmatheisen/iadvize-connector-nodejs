@@ -11,7 +11,7 @@ class IadvizeController {
         idBot: "Watson1234",
         name: "Watson",
         description: "",
-        editorUrl: "https://iadvize-connector.eu-gb.mybluemix.net/api/iadvize",
+        editorUrl: "https://iadvize-connector-v2.eu-gb.mybluemix.net/api/iadvize",
       }
     ];
 
@@ -31,7 +31,7 @@ class IadvizeController {
         idBot: "Watson1234",
         name: "Watson",
         description: "",
-        editorUrl: "https://iadvize-connector.eu-gb.mybluemix.net/api/iadvize"
+        editorUrl: "https://iadvize-connector-v2.eu-gb.mybluemix.net/api/iadvize"
       },
       distributionRules: [],
       createdAt: "2019-02-14T15:11:27Z",
@@ -47,37 +47,24 @@ class IadvizeController {
     // Get body
     const body = req.body;
 
-    assistantHelpers.createSession()
-      .then(() => assistantHelpers.sendMessage(""))
-      .then(assistantResponse => {
-        const response = {
-          idConversation: body.idConversation,
-          idOperator: body.idOperator,
-          replies: [
-            {
-              type: "message",
-              duration: {
-                unit: "millis",
-                value: 1,
-              },
-              payload: {
-                contentType: "text",
-                value: assistantResponse.output.generic[0].text
-              },
-              quickReplies: []
-            }
-          ],
-          variables: [],
-          createdAt: "2019-02-14T15:11:27Z",
+	// Create the Assistant Session
+	assistantHelpers.createSession()
+	  .then(() => {
+		// Create an empty response
+		const response = {
+		  idConversation: body.idConversation,
+		  idOperator: body.idOperator,
+		  replies: [],
+		  variables: [],
+		  createdAt: "2019-02-14T15:11:27Z",
           updatedAt: "2019-02-14T15:11:27Z",
-        };
-        
-        // Send the response
-        res.status(200).send(response);
-      })
-      .catch(err => {
-        res.status(500).send(err);
-      });
+		}
+		// Send the response
+		res.status(200).send(response);
+	  })
+	  .catch(err => {
+		res.status(500).send(err);
+	  });
   }
 
   // POST /conversations/:conversationId:/messages
@@ -89,6 +76,7 @@ class IadvizeController {
 
 	// If the message is sent by the operator, do not answer.
 	if (req.body.message.author.role === "operator") {
+	  // Create an empty response
 	  const response = {
 		idConversation: conversationId,
 		idOperator: body.idOperator,
@@ -97,12 +85,12 @@ class IadvizeController {
 		createdAt: "2019-02-14T15:11:27Z",
         updatedAt: "2019-02-14T15:11:27Z",
 	  }
-
+	  // Send response
 	  res.status(200).send(response)
 	} else {
 	  assistantHelpers.sendMessage(body.message.payload.value)
 		.then(assistantResponse => {
-
+		  // Create a response with watson's answer
           const response = {
 			idConversation: conversationId,
 			idOperator: body.idOperator,
