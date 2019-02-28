@@ -117,7 +117,7 @@ class IadvizeController {
       }
     ];
 
-    res.status(500).send(strategies);
+    res.status(200).send(strategies);
   }
 
 }
