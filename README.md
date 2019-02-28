@@ -1,6 +1,6 @@
 # iAdvize Connector (Node.js)
 
-> This is the Node.js version of the connector previously written in Go  
+> **Note:** This is the Node.js version of the connector previously written in Go
 
 This project is a connector for iAdvize, to use IBM Watson as a bot plugin
 
@@ -13,7 +13,6 @@ This project is a connector for iAdvize, to use IBM Watson as a bot plugin
         - [Install Dependencies :](#install-dependencies-)
         - [Run the server :](#run-the-server-)
     - [Deployment](#deployment)
-    - [Functionalities](#functionalities)
     - [Endpoints served](#endpoints-served)
 
 <!-- markdown-toc end -->
@@ -47,7 +46,7 @@ The server runs on port `8080`
 
 ## Deployment
 
-You will need to deploy this connector in order to use it with iAdvize. You can deploy this anywhere so i won't cover this part in this tutorial. [Here is a link](https://cloud.ibm.com/docs/runtimes/nodejs?topic=Nodejs-getting-started#getting-started) to a tutorial to deploy an Node.js Application on IBM Cloud with Cloud Foundry : 
+You will need to deploy this connector in order to use it with iAdvize. You can deploy this anywhere so i won't cover this part in this tutorial. [Here is a link](https://cloud.ibm.com/docs/runtimes/nodejs?topic=Nodejs-getting-started#getting-started) to a tutorial to deploy an Node.js Application on IBM Cloud with Cloud Foundry
 
 ## Endpoints served
 
