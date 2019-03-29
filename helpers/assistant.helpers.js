@@ -127,6 +127,38 @@ class AssistantHelpers {
 						value: "Watson replied with a suggestion response type but it is not implemented yet"
 					}
 				}
+			case "search":
+				for (let i = 0; i < 3; i++) {
+					const result = genericElement.results[i];
+					if (result.url == null) {
+						result.url = "";
+					}
+				}
+				return {
+					type: "message",
+					payload: {
+						contentType: "text",
+						value: genericElement.header +
+							"<br /><br />" +
+							genericElement.results[0].title +
+							"<br />" +
+							genericElement.results[0].body +
+							"<br />" +
+							genericElement.results[0].url +
+							"<br /><br />" +
+							genericElement.results[1].title +
+							"<br />" +
+							genericElement.results[1].body +
+							"<br />" +
+							genericElement.results[1].url +
+							"<br /><br />" +
+							genericElement.results[2].title +
+							"<br />" +
+							genericElement.results[2].body +
+							"<br />" +
+							genericElement.results[2].url
+					}
+				}
 		}
 	}
 
