@@ -128,12 +128,14 @@ class AssistantHelpers {
 					}
 				}
 			case "search":
+				// A url parameter can be null => replace "null" with ""
 				for (let i = 0; i < 3; i++) {
 					const result = genericElement.results[i];
 					if (result.url == null) {
 						result.url = "";
 					}
 				}
+				// Return the header and the 3 first results with title, body and url
 				return {
 					type: "message",
 					payload: {
