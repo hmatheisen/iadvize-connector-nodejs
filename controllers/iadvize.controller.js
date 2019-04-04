@@ -92,6 +92,8 @@ class IadvizeController {
       assistantHelpers.sendMessage(body.message.payload.value)
         .then(assistantResponse => {
           // Create a response with watson's answer
+
+          console.log(JSON.stringify(assistantResponse, null, 2));
           
           const response = {
             idConversation: conversationId,

@@ -101,6 +101,7 @@ class AssistantHelpers {
 					}
 				}
 			case "option":
+				console.log(quickRepliesArray);
 				let quickRepliesArray = [];
 				genericElement.options.forEach(el => {
 					quickRepliesArray.push({
@@ -128,6 +129,17 @@ class AssistantHelpers {
 					}
 				}
 			case "search":
+
+				if (genericElement.results.length === 0) {
+					return {
+						type: "message",
+						payload: {
+							contentType: "text",
+							value: genericElement.header
+						}
+					}
+				}
+
 				// A url parameter can be null => replace "null" with ""
 				for (let i = 0; i < 3; i++) {
 					const result = genericElement.results[i];
@@ -135,6 +147,7 @@ class AssistantHelpers {
 						result.url = "";
 					}
 				}
+
 				// Return the header and the 3 first results with title, body and url
 				return {
 					type: "message",
