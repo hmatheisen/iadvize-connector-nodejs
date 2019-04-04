@@ -35,8 +35,8 @@ class IadvizeController {
         editorUrl: process.env.EDITOR_URL
       },
       distributionRules: [],
-      createdAt: "2019-02-14T15:11:27Z",
-      updatedAt: "2019-02-14T15:11:27Z",
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
 
     // Send the response
@@ -57,8 +57,8 @@ class IadvizeController {
           idOperator: body.idOperator,
           replies: [],
           variables: [],
-          createdAt: "2019-02-14T15:11:27Z",
-          updatedAt: "2019-02-14T15:11:27Z",
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
         }
         // Send the response
         res.status(200).send(response);
@@ -83,8 +83,8 @@ class IadvizeController {
         idOperator: body.idOperator,
         replies: [],
         variables: [],
-        createdAt: "2019-02-14T15:11:27Z",
-        updatedAt: "2019-02-14T15:11:27Z",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       }
       // Send response
       res.status(200).send(response)
@@ -92,16 +92,14 @@ class IadvizeController {
       assistantHelpers.sendMessage(body.message.payload.value)
         .then(assistantResponse => {
           // Create a response with watson's answer
-
-          console.log(JSON.stringify(assistantResponse, null, 2));
           
           const response = {
             idConversation: conversationId,
             idOperator: body.idOperator,
             replies: assistantHelpers.createIAdvizeReplyArray(assistantResponse.output.generic),
             variables: [],
-            createdAt: "2019-02-14T15:11:27Z",
-            updatedAt: "2019-02-14T15:11:27Z",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
           };
           // Send the Response
           res.status(200).send(response);

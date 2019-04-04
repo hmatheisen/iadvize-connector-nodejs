@@ -101,7 +101,6 @@ class AssistantHelpers {
 					}
 				}
 			case "option":
-				console.log(quickRepliesArray);
 				let quickRepliesArray = [];
 				genericElement.options.forEach(el => {
 					quickRepliesArray.push({
