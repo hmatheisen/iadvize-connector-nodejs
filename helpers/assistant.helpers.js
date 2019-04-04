@@ -63,7 +63,7 @@ class AssistantHelpers {
 			replies.push(this.createIAdvizeReplyElement(genericArray[0]));
 		} else {
 			// Push every replies in the replies array
-			genricArray.forEach(genericEl => {
+			genericArray.forEach(genericEl => {
 				replies.push(this.createIAdvizeReplyElement(genericEl));
 			});
 		}
@@ -72,7 +72,7 @@ class AssistantHelpers {
 	}
 
 
-	// Create the reply object dependaing on the Assistant's response type
+	// Create the reply object depending on the Assistant's response type
 	createIAdvizeReplyElement(genericElement) {
 		// Create iAdvize's response depending on the response type
 		switch (genericElement.response_type) {
@@ -166,11 +166,11 @@ class AssistantHelpers {
 
 	// Fetch the Routing Rules from the OAuth API
 	getRoutingRules() {
-		// Retrive token then retrieve routing rules
+		// Retrieve token then retrieve routing rules
 		return iAdvizeHelpers.retrieveToken()
 			.then(resp => iAdvizeHelpers.retrieveRoutingRule(JSON.parse(resp).access_token))
 			.then(resp => {
-				// Create the 'transfer' object response if the request resolvve
+				// Create the 'transfer' object response if the request resolve
 				this.transferResponse = {
 					type: "transfer",
 					distributionRule: JSON.parse(resp).data.routingRules[0].id
@@ -187,7 +187,6 @@ class AssistantHelpers {
 				}
 			});
 	}
-
 }
 
 module.exports = AssistantHelpers;

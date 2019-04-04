@@ -61,7 +61,7 @@ class IAdvizeHelpers {
         reject(err);
       });
 
-      // If the Content-type is urlencoder (not JSON) use body.toString()
+      // If the Content-type is urlencoded (not JSON) use body.toString()
       if (options.headers["Content-Type"] === "application/x-www-form-urlencoded") {
         req.end(body.toString());
       } else {
